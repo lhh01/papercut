@@ -5,6 +5,8 @@
  */
 package com.printcalculator.bean;
 
+import com.printcalculator.enums.PrintJobName;
+import com.printcalculator.enums.PrintJobType;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,7 +18,7 @@ import static org.junit.Assert.*;
  *
  * @author LiH
  */
-public class A4SingleSidedPrintJobTest {
+public class A4SingleSidedPrintJobTest extends PrintJobTest{
     
     public A4SingleSidedPrintJobTest() {
     }
@@ -37,10 +39,11 @@ public class A4SingleSidedPrintJobTest {
     public void tearDown() {
     }
 
-    @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+
+    @Override
+    protected void setInstance(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
