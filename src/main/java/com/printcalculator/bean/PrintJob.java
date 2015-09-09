@@ -5,10 +5,17 @@
  */
 package com.printcalculator.bean;
 
+import com.printcalculator.enums.PrintJobName;
+import com.printcalculator.enums.PrintJobType;
+
 /**
  *
  * @author LiH
  */
-public class PrintJob {
+public abstract class PrintJob {
+    
+      public PrintJob(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
+       
+    }
     
 }
