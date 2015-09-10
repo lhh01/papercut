@@ -64,7 +64,7 @@ public class A4DoubleSidedPrintJobTest extends PrintJobTest {
         assertEquals(0, colourPageNumber);
 
     }
-    
+
     @Test
     public void testConstructA4DoubleSidedPrintJobWithTwoArguments() {
         logger.log(Level.FINE, "testConstructA4DoubleSidedPrintJobWithTwoArguments...");
@@ -95,6 +95,26 @@ public class A4DoubleSidedPrintJobTest extends PrintJobTest {
         assertEquals(PrintJobName.A4DoubleSide, name);
         assertEquals(100, totalPageNumber);
         assertEquals(30, colourPageNumber);
+    }
+
+    @Test
+    public void testToString() {
+        logger.log(Level.FINE, "testToString...");
+        A4DoubleSidedPrintJob job = new A4DoubleSidedPrintJob(100, 30, PrintJobName.A4DoubleSide);
+
+        String result = job.toString();
+        assertTrue(result.startsWith("com.printcalculator.bean.A4DoubleSidedPrintJob[id="));
+
+    }
+
+    @Test
+    public void testEqualsAndHashCode() {
+        logger.log(Level.FINE, "testEqualsAndHashCode...");
+        A4DoubleSidedPrintJob job1 = new A4DoubleSidedPrintJob(100, 30, PrintJobName.A4DoubleSide);
+        A4DoubleSidedPrintJob job2 = new A4DoubleSidedPrintJob(100, 30, PrintJobName.A4DoubleSide);
+        assertFalse(job1.equals(job2));
+        assertFalse(job1.hashCode() == job2.hashCode());
+
     }
 
 }

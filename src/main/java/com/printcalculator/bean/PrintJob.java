@@ -55,12 +55,29 @@ public abstract class PrintJob implements Serializable {
 
     @Override
     public int hashCode() {
-        return 0;
+        if (id != null) {
+            return id.hashCode();
+        } else {
+            return super.hashCode();
+        }
     }
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        if (id == null) {
+            return false;
+        }
 
+        final PrintJob other = (PrintJob) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
         return true;
     }
 
