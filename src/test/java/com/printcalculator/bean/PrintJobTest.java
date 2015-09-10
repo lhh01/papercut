@@ -25,11 +25,11 @@ public abstract class PrintJobTest {
 
         setInstance(0, 0, PrintJobType.Unknown, PrintJobName.Unknown);
 
-        PrintJobType type = instance.getJobType();
+     
         PrintJobName name = instance.getJobName();
         int totalPageNumber = instance.getNumberOfTotalPages();
         int colourPageNumber = instance.getNumberOfColourPages();
-        assertEquals(PrintJobType.Unknown, type);
+
         assertEquals(PrintJobName.Unknown, name);
         assertEquals(0, totalPageNumber);
         assertEquals(0, colourPageNumber);

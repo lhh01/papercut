@@ -28,7 +28,7 @@ public class A4DoubleSidedPrintJob extends PrintJob {
         this(totalPages, colourPages, PrintJobType.A4DoubleSide, jobName);
     }
 
-    public A4DoubleSidedPrintJob(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
+    private A4DoubleSidedPrintJob(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
         super(totalPages, colourPages, jobType, jobName);
     }
 

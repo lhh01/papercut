@@ -45,7 +45,19 @@ public class A4DoubleSidedPrintJobTest extends PrintJobTest {
 
     @Override
     protected void setInstance(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
-        instance = new A4DoubleSidedPrintJob(totalPages, colourPages, jobType, jobName);
+        instance = new A4DoubleSidedPrintJob(totalPages, colourPages, jobName);
+    }
+
+    @Test
+    @Override
+    public void testConstructor() {
+
+        super.testConstructor();
+
+        PrintJobType type = instance.getJobType();
+
+        assertEquals(PrintJobType.A4DoubleSide, type);
+
     }
 
     @Test
