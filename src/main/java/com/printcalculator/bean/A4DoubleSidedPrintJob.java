@@ -12,7 +12,7 @@ import com.printcalculator.enums.PrintJobType;
  *
  * @author LiH
  */
-public class A4DoubleSidedPrintJob extends PrintJob {
+public final class A4DoubleSidedPrintJob extends PrintJob {
 
     private static final long serialVersionUID = -3654655474771414160L;
 
