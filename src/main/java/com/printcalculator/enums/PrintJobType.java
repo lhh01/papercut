@@ -10,5 +10,5 @@ package com.printcalculator.enums;
  * @author LiH
  */
 public enum PrintJobType {
-    Unknow
+    Unknown
 }

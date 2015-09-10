@@ -5,10 +5,17 @@
  */
 package com.printcalculator.bean;
 
+import com.printcalculator.enums.PrintJobName;
+import com.printcalculator.enums.PrintJobType;
+
 /**
  *
  * @author LiH
  */
-public class A4SingleSidedPrintJob {
+public class A4SingleSidedPrintJob extends PrintJob{
+
+    public A4SingleSidedPrintJob(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
+        super(totalPages, colourPages, jobType, jobName);
+    }
     
 }

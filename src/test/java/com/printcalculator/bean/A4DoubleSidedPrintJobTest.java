@@ -18,32 +18,30 @@ import static org.junit.Assert.*;
  *
  * @author LiH
  */
-public class A4DoubleSidedPrintJobTest extends PrintJobTest{
-    
+public class A4DoubleSidedPrintJobTest extends PrintJobTest {
+
     public A4DoubleSidedPrintJobTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-  
-
     @Override
     protected void setInstance(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        instance = new A4DoubleSidedPrintJob(totalPages, colourPages, jobType, jobName);
     }
-    
+
 }

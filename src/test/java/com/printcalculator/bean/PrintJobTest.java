@@ -22,7 +22,7 @@ public abstract class PrintJobTest {
     @Test
     public void testConstructor() {
 
-        setInstance(0, 0, PrintJobType.Unknow, PrintJobName.Unknow);
+        setInstance(0, 0, PrintJobType.Unknown, PrintJobName.Unknown);
 
     }
 
