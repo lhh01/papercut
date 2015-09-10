@@ -12,10 +12,16 @@ import com.printcalculator.enums.PrintJobType;
  *
  * @author LiH
  */
-public class A4DoubleSidedPrintJob extends PrintJob{
+public class A4DoubleSidedPrintJob extends PrintJob {
+
+    private static final long serialVersionUID = -3654655474771414160L;
+
+    public A4DoubleSidedPrintJob() {
+        this(0, 0, PrintJobType.A4DoubleSide, PrintJobName.A4DoubleSide);
+    }
 
     public A4DoubleSidedPrintJob(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
         super(totalPages, colourPages, jobType, jobName);
     }
-    
+
 }

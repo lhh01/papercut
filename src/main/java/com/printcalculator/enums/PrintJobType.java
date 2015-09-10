@@ -10,5 +10,5 @@ package com.printcalculator.enums;
  * @author LiH
  */
 public enum PrintJobType {
-    Unknown
+    Unknown, A4SingleSide, A4DoubleSide;
 }
