@@ -64,5 +64,37 @@ public class A4DoubleSidedPrintJobTest extends PrintJobTest {
         assertEquals(0, colourPageNumber);
 
     }
+    
+    @Test
+    public void testConstructA4DoubleSidedPrintJobWithTwoArguments() {
+        logger.log(Level.FINE, "testConstructA4DoubleSidedPrintJobWithTwoArguments...");
+        A4DoubleSidedPrintJob job = new A4DoubleSidedPrintJob(100, 30);
+
+        PrintJobType type = job.getJobType();
+        PrintJobName name = job.getJobName();
+        int totalPageNumber = job.getNumberOfTotalPages();
+        int colourPageNumber = job.getNumberOfColourPages();
+
+        assertEquals(PrintJobType.A4DoubleSide, type);
+        assertEquals(PrintJobName.A4DoubleSide, name);
+        assertEquals(100, totalPageNumber);
+        assertEquals(30, colourPageNumber);
+    }
+
+    @Test
+    public void testConstructA4DoubleSidedPrintJobWithThreeArguments() {
+        logger.log(Level.FINE, "testConstructA4DoubleSidedPrintJobWithThreeArguments...");
+        A4DoubleSidedPrintJob job = new A4DoubleSidedPrintJob(100, 30, PrintJobName.A4DoubleSide);
+
+        PrintJobType type = job.getJobType();
+        PrintJobName name = job.getJobName();
+        int totalPageNumber = job.getNumberOfTotalPages();
+        int colourPageNumber = job.getNumberOfColourPages();
+
+        assertEquals(PrintJobType.A4DoubleSide, type);
+        assertEquals(PrintJobName.A4DoubleSide, name);
+        assertEquals(100, totalPageNumber);
+        assertEquals(30, colourPageNumber);
+    }
 
 }
