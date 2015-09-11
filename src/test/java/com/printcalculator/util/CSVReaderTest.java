@@ -21,6 +21,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 /**
  *
@@ -36,6 +38,9 @@ public class CSVReaderTest {
     private FileInputStream fileInputStream;
     private InputStreamReader inputStreamReader;
     private CSVReader csvReader;
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     public CSVReaderTest() {
     }
@@ -96,6 +101,20 @@ public class CSVReaderTest {
         List<String[]> entries = csvReader.readAll();
 
         assertEquals(4, entries.size());
+    }
+
+    @Test
+    public void testClose() throws Exception {
+        logger.log(Level.FINE, "testClose...");
+        thrown.expect(IOException.class);
+        thrown.expectMessage("Stream closed");
+        try {
+            csvReader.close();
+        } catch (IOException e) {
+            logger.log(Level.FINE, "OK. Cannot close csvReader");
+        }
+
+        csvReader.readAll();
     }
 
 }
