@@ -28,7 +28,7 @@ public class A4SingleSidedPrintJob extends PrintJob {
         this(totalPages, colourPages, PrintJobType.A4SingleSide, jobName);
     }
 
-    public A4SingleSidedPrintJob(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
+    private A4SingleSidedPrintJob(int totalPages, int colourPages, PrintJobType jobType, PrintJobName jobName) {
         super(totalPages, colourPages, jobType, jobName);
     }
 
