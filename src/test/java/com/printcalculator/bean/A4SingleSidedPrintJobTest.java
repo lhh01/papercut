@@ -76,7 +76,7 @@ public class A4SingleSidedPrintJobTest extends PrintJobTest {
     }
 
     @Test
-    public void testConstructA4SingleSidedPrintJobWith3Arguments() {
+    public void testConstructA4SingleSidedPrintJobWithThreeArguments() {
         A4SingleSidedPrintJob job = new A4SingleSidedPrintJob(100, 30, PrintJobName.A4SingleSide);
 
         PrintJobType type = job.getJobType();
@@ -88,6 +88,24 @@ public class A4SingleSidedPrintJobTest extends PrintJobTest {
         assertEquals(PrintJobName.A4SingleSide, name);
         assertEquals(100, totalPageNumber);
         assertEquals(30, colourPageNumber);
+    }
+
+    @Test
+    public void testToString() {
+        A4SingleSidedPrintJob job = new A4SingleSidedPrintJob(100, 0, PrintJobName.A4SingleSide);
+
+        String result = job.toString();
+        assertTrue(result.startsWith("com.printcalculator.bean.A4SingleSidedPrintJob[id="));
+
+    }
+
+    @Test
+    public void testEqualsAndHashCode() {
+        A4SingleSidedPrintJob job1 = new A4SingleSidedPrintJob(100, 0, PrintJobName.A4SingleSide);
+        A4SingleSidedPrintJob job2 = new A4SingleSidedPrintJob(100, 0, PrintJobName.A4SingleSide);
+        assertFalse(job1.equals(job2));
+        assertFalse(job1.hashCode() == job2.hashCode());
+
     }
 
 }
