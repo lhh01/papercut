@@ -5,10 +5,15 @@
  */
 package com.printcalculator.util;
 
+import java.util.List;
+
 /**
  *
  * @author LiH
  */
 public class CSVReader {
-    
+
+    List<String[]> readAll() {
+        return null;
+    }
 }
