@@ -59,5 +59,22 @@ public class A4SingleSidedPrintJobTest extends PrintJobTest {
         assertEquals(0, colourPageNumber);
 
     }
+    
+    
+    
+      @Test
+    public void testConstructA4SingleSidedPrintJobWithTwoArguments() {
+        A4SingleSidedPrintJob job = new A4SingleSidedPrintJob(100, 30);
+
+        PrintJobType type = job.getJobType();
+        PrintJobName name = job.getJobName();
+        int totalPageNumber = job.getNumberOfTotalPages();
+        int colourPageNumber = job.getNumberOfColourPages();
+
+        assertEquals(PrintJobType.A4SingleSide, type);
+        assertEquals(PrintJobName.A4SingleSide, name);
+        assertEquals(100, totalPageNumber);
+        assertEquals(30, colourPageNumber);
+    }
 
 }
