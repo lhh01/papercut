@@ -13,16 +13,10 @@ import java.util.List;
  *
  * @author LiH
  */
-public class PrintCalculator implements Calculator {
+public interface Calculator {
 
-    @Override
-    public BigDecimal calcaulteSingleJobCost(PrintJob job) {
-        return null;
-    }
+    BigDecimal calcaulteSingleJobCost(PrintJob job);
 
-    @Override
-    public BigDecimal calcaulteAllJobCost(List<BigDecimal> jobResults) {
-        return null;
-    }
-
+    BigDecimal calcaulteAllJobCost(List<BigDecimal> jobResults);
+    
 }
