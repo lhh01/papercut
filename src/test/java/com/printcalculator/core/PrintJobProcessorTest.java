@@ -5,11 +5,10 @@
  */
 package com.printcalculator.core;
 
-import com.printcalculator.bean.PrintJob;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.math.BigDecimal;
-import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

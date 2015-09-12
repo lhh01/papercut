@@ -10,6 +10,7 @@ import com.printcalculator.bean.A4SingleSidedPrintJob;
 import com.printcalculator.bean.PrintJob;
 import com.printcalculator.enums.PrintJobName;
 import com.printcalculator.enums.PrintJobType;
+import com.printcalculator.exception.UnexpectedException;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 /**
  *
@@ -35,6 +38,9 @@ public class A4PrintJobProcessorTest extends PrintJobProcessorTest {
 
     private A4DoubleSidedPrintJob a4DoubleSidedPrintJob;
     private A4SingleSidedPrintJob a4SingleSidedPrintJob;
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     public A4PrintJobProcessorTest() {
     }
@@ -104,6 +110,36 @@ public class A4PrintJobProcessorTest extends PrintJobProcessorTest {
         assertTrue(PrintJobName.A4SingleSide == secondName);
         assertEquals(100, secondTotalPageNumber);
         assertEquals(0, secondColourPageNumber);
+
+    }
+
+    @Test
+    public void testParseCsvToPrintJobListWithInvalidValueException() {
+        thrown.expect(UnexpectedException.class);
+        thrown.expectMessage("Invalid value at line:1");
+        List<String[]> entries = new ArrayList<>();
+        String[] row1 = {"100", "-1", "true"};
+
+        entries.add(row1);
+
+        A4PrintJobProcessor jobProcessor = new A4PrintJobProcessor(csvFile);
+
+        List<PrintJob> result = jobProcessor.parseCsvToPrintJobList(entries);
+
+    }
+
+    @Test
+    public void testParseCsvToPrintJobListWithParsingErrorException() {
+        thrown.expect(UnexpectedException.class);
+        thrown.expectMessage("Parsing csv error at line:1");
+        List<String[]> entries = new ArrayList<>();
+        String[] row1 = {"100", "10k", "true"};
+
+        entries.add(row1);
+
+        A4PrintJobProcessor jobProcessor = new A4PrintJobProcessor(csvFile);
+
+        List<PrintJob> result = jobProcessor.parseCsvToPrintJobList(entries);
 
     }
 
