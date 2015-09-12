@@ -8,8 +8,11 @@ package com.printcalculator.core;
 import com.printcalculator.bean.PrintJob;
 import com.printcalculator.enums.PrintJobType;
 import com.printcalculator.exception.UnexpectedException;
+import com.printcalculator.util.Calculator;
+import com.printcalculator.util.PrintCalculator;
 import com.printcalculator.util.PrintJobFactory;
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -36,7 +39,23 @@ public class A4PrintJobProcessor extends PrintJobProcessor {
 
     @Override
     protected void outputPrintJobResult(List<PrintJob> jobs) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Calculator cal = new PrintCalculator();
+        List<BigDecimal> jobResults = new ArrayList<>();
+        BigDecimal totalCost = BigDecimal.ZERO;
+
+        for (PrintJob a4PrintJob : jobs) {
+            BigDecimal jobCost = cal.calcaulteSingleJobCost(a4PrintJob);
+            jobResults.add(jobCost);
+            printJobDetails(a4PrintJob.getDetails());
+
+            printJobCost(jobCost);
+            
+            System.out.println();
+
+        }
+
+        totalCost = cal.calcaulteAllJobCost(jobResults);
+        printTotalJobCost(totalCost);
     }
 
     @Override
@@ -44,7 +63,7 @@ public class A4PrintJobProcessor extends PrintJobProcessor {
         ArrayList<PrintJob> printJobList = new ArrayList<>();
         int lineCounter = 1;
         StringBuilder stringBuilder = new StringBuilder();
-        
+
         for (String[] entry : entries) {
             PrintJob printJob = null;
             String totalNumberTemp = entry[0].trim();

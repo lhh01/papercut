@@ -103,6 +103,21 @@ public class A4SingleSidedPrintJobTest extends PrintJobTest {
     }
 
     @Test
+    public void testGetDetails() {
+        A4SingleSidedPrintJob job = new A4SingleSidedPrintJob(100, 0, PrintJobName.A4SingleSide);
+
+        String result = job.getDetails();
+        StringBuilder builder = new StringBuilder();
+        String line = System.getProperty("line.separator");
+        builder.append("Job Name:").append(PrintJobName.A4SingleSide.getName()).append(line)
+                .append("Total pages number:").append(100).append(line)
+                .append("Colour pages number:").append(0);
+        
+
+        assertEquals(builder.toString(), result);
+    }
+
+    @Test
     public void testToString() {
         A4SingleSidedPrintJob job = new A4SingleSidedPrintJob(100, 0, PrintJobName.A4SingleSide);
 

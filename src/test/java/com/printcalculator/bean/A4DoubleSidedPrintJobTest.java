@@ -110,6 +110,23 @@ public class A4DoubleSidedPrintJobTest extends PrintJobTest {
     }
 
     @Test
+    public void testGetDetails() {
+        logger.log(Level.FINE, "testGetDetails...");
+        A4DoubleSidedPrintJob job = new A4DoubleSidedPrintJob(100, 30, PrintJobName.A4DoubleSide);
+
+        String result = job.getDetails();
+        StringBuilder builder = new StringBuilder();
+        String line = System.getProperty("line.separator");
+        
+        builder.append("Job Name:").append(PrintJobName.A4DoubleSide.getName()).append(line)
+                .append("Total pages number:").append(100).append(line)
+                .append("Colour pages number:").append(30);
+        
+
+        assertEquals(builder.toString(), result);
+    }
+
+    @Test
     public void testToString() {
         logger.log(Level.FINE, "testToString...");
         A4DoubleSidedPrintJob job = new A4DoubleSidedPrintJob(100, 30, PrintJobName.A4DoubleSide);

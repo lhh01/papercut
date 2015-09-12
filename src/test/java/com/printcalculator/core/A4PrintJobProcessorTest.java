@@ -143,4 +143,33 @@ public class A4PrintJobProcessorTest extends PrintJobProcessorTest {
 
     }
 
+    @Test
+    public void testOutputPrintJobResult() {
+        StringBuilder builder = new StringBuilder();       
+
+        builder.append("Job Name:A4 Double Sided Print Job").append(LINE_BREAK);
+        builder.append("Total pages number:100").append(LINE_BREAK);
+        builder.append("Colour pages number:30").append(LINE_BREAK);
+        builder.append("Print cost:13.00").append(LINE_BREAK);
+        builder.append(LINE_BREAK);
+
+        builder.append("Job Name:A4 Single Sided Print Job").append(LINE_BREAK);
+        builder.append("Total pages number:100").append(LINE_BREAK);
+        builder.append("Colour pages number:0").append(LINE_BREAK);
+        builder.append("Print cost:15.00").append(LINE_BREAK);
+        builder.append(LINE_BREAK);
+
+        builder.append("Total print cost:28.00").append(LINE_BREAK);
+
+        A4PrintJobProcessor jobProcessor = new A4PrintJobProcessor(csvFile);
+        List<PrintJob> jobs = new ArrayList<>();
+        
+        jobs.add(a4DoubleSidedPrintJob);
+        jobs.add(a4SingleSidedPrintJob);
+        jobProcessor.outputPrintJobResult(jobs);
+
+        assertEquals(builder.toString(), outContent.toString());
+
+    }
+
 }

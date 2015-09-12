@@ -53,6 +53,18 @@ public abstract class PrintJob implements Serializable {
         return id;
     }
 
+    public String getDetails() {
+        StringBuilder builder = new StringBuilder();
+        String line = System.getProperty("line.separator");
+        
+        builder.append("Job Name:").append(jobName.getName()).append(line)
+                .append("Total pages number:").append(numberOfTotalPages).append(line)
+                .append("Colour pages number:").append(numberOfColourPages);
+
+        return builder.toString();
+
+    }
+
     @Override
     public int hashCode() {
         if (id != null) {
