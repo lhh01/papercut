@@ -5,6 +5,7 @@
  */
 package com.printcalculator.util;
 
+import com.printcalculator.bean.A4DoubleSidedPrintJob;
 import com.printcalculator.bean.A4SingleSidedPrintJob;
 import com.printcalculator.bean.PrintJob;
 import java.math.BigDecimal;
@@ -27,7 +28,7 @@ public class PrintCalculatorTest {
 
     private static final Logger logger = Logger.getLogger(PrintCalculatorTest.class.getName());
     private PrintJob a4SingleSidedPrintJob;
-
+    private PrintJob a4DoubleSidedPrintJob;
     private Calculator printCalculator;
     private List<BigDecimal> jobResults;
 
@@ -45,7 +46,7 @@ public class PrintCalculatorTest {
     @Before
     public void setUp() {
         a4SingleSidedPrintJob = new A4SingleSidedPrintJob(25, 10);
-
+        a4DoubleSidedPrintJob = new A4DoubleSidedPrintJob(55, 13);
         printCalculator = new PrintCalculator();
         jobResults = new ArrayList<>();
         jobResults.add(new BigDecimal("4.75"));
@@ -66,6 +67,15 @@ public class PrintCalculatorTest {
         BigDecimal result = printCalculator.calcaulteSingleJobCost(a4SingleSidedPrintJob);
         assertEquals(expResult, result);
 
+    }
+
+    @Test
+    public void testCalcaulteSingleJobCost_doubleSide() {
+        logger.log(Level.FINE, "testCalcaulteSingleJobCost_doubleSide...");
+
+        BigDecimal expResult = new BigDecimal("6.80");
+        BigDecimal result = printCalculator.calcaulteSingleJobCost(a4DoubleSidedPrintJob);
+        assertEquals(expResult, result);
     }
 
     @Test
