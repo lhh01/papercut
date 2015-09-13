@@ -34,7 +34,7 @@ public class PrintJobFactory {
         }
 
         if (printJob == null) {
-            throw new UnexpectedException("Cannot create a print job ojbect. Unknow print job type");
+            throw new UnexpectedException("Cannot create a print job ojbect. Unknown print job type");
         }
 
         return printJob;

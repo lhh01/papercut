@@ -31,7 +31,7 @@ public class CSVReader {
         this.csvSeparator = csvSeparator;
     }
 
-    List<String[]> readAll() throws IOException {
+    public List<String[]> readAll() throws IOException {
         String line;
         ArrayList<String[]> entries = new ArrayList<>();
 
