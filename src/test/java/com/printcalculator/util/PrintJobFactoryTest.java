@@ -91,7 +91,7 @@ public class PrintJobFactoryTest {
         logger.log(Level.FINE, "testGetA4PrintJobWithUnknownTypeException...");
 
         thrown.expect(UnexpectedException.class);
-        thrown.expectMessage("Cannot create a print job ojbect. Unknow print job type");
+        thrown.expectMessage("Cannot create a print job ojbect. Unknown print job type");
 
         PrintJobType jobType = PrintJobType.Unknown;
 
