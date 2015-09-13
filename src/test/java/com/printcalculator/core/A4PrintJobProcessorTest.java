@@ -158,7 +158,6 @@ public class A4PrintJobProcessorTest extends PrintJobProcessorTest {
         builder.append("Colour pages number:0").append(LINE_BREAK);
         builder.append("Print cost:15.00").append(LINE_BREAK);
         builder.append(LINE_BREAK);
-
         builder.append("Total print cost:28.00").append(LINE_BREAK);
 
         A4PrintJobProcessor jobProcessor = new A4PrintJobProcessor(csvFile);
@@ -167,6 +166,43 @@ public class A4PrintJobProcessorTest extends PrintJobProcessorTest {
         jobs.add(a4DoubleSidedPrintJob);
         jobs.add(a4SingleSidedPrintJob);
         jobProcessor.outputPrintJobResult(jobs);
+
+        assertEquals(builder.toString(), outContent.toString());
+
+    }
+    
+     @Test
+    public void testProcessPrintJob() throws Exception {
+        StringBuilder builder = new StringBuilder();
+    
+        builder.append("Job Name:A4 Single Sided Print Job").append(LINE_BREAK);
+        builder.append("Total pages number:25").append(LINE_BREAK);
+        builder.append("Colour pages number:10").append(LINE_BREAK);
+        builder.append("Print cost:4.75").append(LINE_BREAK);
+        builder.append(LINE_BREAK);
+
+        builder.append("Job Name:A4 Double Sided Print Job").append(LINE_BREAK);
+        builder.append("Total pages number:55").append(LINE_BREAK);
+        builder.append("Colour pages number:13").append(LINE_BREAK);
+        builder.append("Print cost:6.80").append(LINE_BREAK);
+        builder.append(LINE_BREAK);
+
+        builder.append("Job Name:A4 Double Sided Print Job").append(LINE_BREAK);
+        builder.append("Total pages number:502").append(LINE_BREAK);
+        builder.append("Colour pages number:22").append(LINE_BREAK);
+        builder.append("Print cost:52.40").append(LINE_BREAK);
+        builder.append(LINE_BREAK);
+
+        builder.append("Job Name:A4 Single Sided Print Job").append(LINE_BREAK);
+        builder.append("Total pages number:1").append(LINE_BREAK);
+        builder.append("Colour pages number:0").append(LINE_BREAK);
+        builder.append("Print cost:0.15").append(LINE_BREAK);
+        builder.append(LINE_BREAK);
+
+        builder.append("Total print cost:64.10").append(LINE_BREAK);
+
+        A4PrintJobProcessor jobProcessor = new A4PrintJobProcessor(csvFile);
+        jobProcessor.processPrintJob();
 
         assertEquals(builder.toString(), outContent.toString());
 

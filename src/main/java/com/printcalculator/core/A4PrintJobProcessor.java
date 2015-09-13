@@ -8,10 +8,14 @@ package com.printcalculator.core;
 import com.printcalculator.bean.PrintJob;
 import com.printcalculator.enums.PrintJobType;
 import com.printcalculator.exception.UnexpectedException;
+import com.printcalculator.util.CSVReader;
 import com.printcalculator.util.Calculator;
 import com.printcalculator.util.PrintCalculator;
 import com.printcalculator.util.PrintJobFactory;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +37,6 @@ public class A4PrintJobProcessor extends PrintJobProcessor {
     }
 
     @Override
-    public void processPrintJob() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     protected void outputPrintJobResult(List<PrintJob> jobs) {
         Calculator cal = new PrintCalculator();
         List<BigDecimal> jobResults = new ArrayList<>();
@@ -49,7 +48,7 @@ public class A4PrintJobProcessor extends PrintJobProcessor {
             printJobDetails(a4PrintJob.getDetails());
 
             printJobCost(jobCost);
-            
+
             System.out.println();
 
         }
@@ -93,7 +92,8 @@ public class A4PrintJobProcessor extends PrintJobProcessor {
 
             if (doubleSide) {
                 printJob = PrintJobFactory.getA4PrintJob(PrintJobType.A4DoubleSide, totalPageNumber, colourPageNumber);
-            } else {
+            } 
+            else {
                 printJob = PrintJobFactory.getA4PrintJob(PrintJobType.A4SingleSide, totalPageNumber, colourPageNumber);
             }
 
@@ -102,6 +102,51 @@ public class A4PrintJobProcessor extends PrintJobProcessor {
         }
 
         return printJobList;
+    }
+
+    @Override
+    public void processPrintJob() throws Exception {
+
+        FileInputStream fileInputStream = null;
+        InputStreamReader inputStreamReader = null;
+        CSVReader csvReader = null;
+        
+        try {
+            fileInputStream = new FileInputStream(a4PrintJobFile);
+            inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8");
+            csvReader = new CSVReader(inputStreamReader);
+
+            List<String[]> entries = csvReader.readAll();
+            List<PrintJob> a4JobList = parseCsvToPrintJobList(entries);
+            
+            outputPrintJobResult(a4JobList);
+
+        } finally {
+            if (csvReader != null) {
+                try {
+                    csvReader.close();
+                } catch (IOException e) {
+                    logger.log(Level.FINE, "Cannot close csv reader", e);
+                }
+            }
+
+            if (inputStreamReader != null) {
+                try {
+                    inputStreamReader.close();
+                } catch (IOException e) {
+                    logger.log(Level.FINE, "Cannot close input stream reader", e);
+                }
+            }
+
+            if (fileInputStream != null) {
+                try {
+                    fileInputStream.close();
+                } catch (IOException e) {
+                    logger.log(Level.FINE, "Cannot close file input stream ", e);
+                }
+            }
+        }
+
     }
 
 }
