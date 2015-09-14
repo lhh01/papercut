@@ -15,7 +15,7 @@ Run Instruction
 1. Install Java and set Java environment 
 
 
-2. From command line, go to dist folder of the above unzipped file and run command:
+2. From command line, go to dist folder and run command:
 
 java -classpath PrintCalculator-1.0-SNAPSHOT.jar com.printcalculator.PrintJobRunner
 
